@@ -13,47 +13,53 @@ precoInicial = Convert.ToDecimal(Console.ReadLine());
 Console.WriteLine("Agora digite o preço por hora:");
 precoPorHora = Convert.ToDecimal(Console.ReadLine());
 
-// Instancia a classe Estacionamento, já com os valores obtidos anteriormente
-Estacionamento es = new Estacionamento(precoInicial, precoPorHora);
-
-string opcao = string.Empty;
-bool exibirMenu = true;
-
-// Realiza o loop do menu
-while (exibirMenu)
+if (precoInicial >= 0 && precoPorHora >= 0)
 {
-    Console.Clear();
-    Console.WriteLine("Digite a sua opção:");
-    Console.WriteLine("1 - Cadastrar veículo");
-    Console.WriteLine("2 - Remover veículo");
-    Console.WriteLine("3 - Listar veículos");
-    Console.WriteLine("4 - Encerrar");
+    Estacionamento es = new Estacionamento(precoInicial, precoPorHora);
 
-    switch (Console.ReadLine())
+    // Realiza o loop do menu
+    string opcao = string.Empty;
+    bool exibirMenu = true;
+    
+    while (exibirMenu)
     {
-        case "1":
-            es.AdicionarVeiculo();
-            break;
+        Console.Clear();
+        Console.WriteLine("Digite a sua opção:");
+        Console.WriteLine("1 - Cadastrar veículo");
+        Console.WriteLine("2 - Remover veículo");
+        Console.WriteLine("3 - Listar veículos");
+        Console.WriteLine("4 - Encerrar");
 
-        case "2":
-            es.RemoverVeiculo();
-            break;
+        switch (Console.ReadLine())
+        {
+            case "1":
+                es.AdicionarVeiculo();
+                break;
 
-        case "3":
-            es.ListarVeiculos();
-            break;
+            case "2":
+                es.RemoverVeiculo();
+                break;
 
-        case "4":
-            exibirMenu = false;
-            break;
+            case "3":
+                es.ListarVeiculos();
+                break;
 
-        default:
-            Console.WriteLine("Opção inválida");
-            break;
+            case "4":
+                exibirMenu = false;
+                break;
+
+            default:
+                Console.WriteLine("Opção inválida");
+                break;
+        }
+
+        Console.WriteLine("Pressione uma tecla para continuar");
+        Console.ReadLine();
     }
-
-    Console.WriteLine("Pressione uma tecla para continuar");
-    Console.ReadLine();
+}
+else
+{
+    Console.WriteLine("O número não pode ser negativo");
 }
 
 Console.WriteLine("O programa se encerrou");
